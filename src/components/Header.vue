@@ -50,7 +50,7 @@ export default {
 .header{
     transition: all .4s;
     width: 100%;
-    height: 5rem;
+    height:4rem;
     z-index: 2;
     position: fixed;
     padding: 0 7rem;
@@ -64,41 +64,42 @@ export default {
 }
 
 .brand-logo{
+    width: 12rem;
     text-align: center;
     font-family: "Microsoft YaHei";
     position: absolute;
     color: #fff;
     padding: 0;
     
-    left:6rem
+    left:8rem
 }
 
 .header-logo{
-    padding-top:.45rem;
-    height: 4rem
+    padding-top:.6rem;
+    height: 3rem
 
 }
 
 .logo-span{
     line-height: 4rem;
     display: inline-block;
-    font-size: 2.6rem;
-    line-height:5rem;
-    height: 5rem;
+    font-size: 2rem;
+    line-height:4rem;
+    height: 4rem;
     text-align: center;
 }
 
 .nav-right{
     text-align: center;
-    line-height: 5rem;
-    font-size: 1.2rem;
+    line-height: 4rem;
+    font-size: 1rem;
     color:#fff;
     display: flex;
     justify-content: center;
     position: absolute;
     width: auto;
     right: 6rem;
-    height: 5rem;
+    height: 4rem;
     
 }
 
@@ -107,7 +108,7 @@ export default {
     text-decoration: none !important;
     padding: 0 1.2rem;
     width: auto;
-    height:5rem;
+    height:4rem;
 }
 
 .navitem:hover{
@@ -121,5 +122,23 @@ export default {
 
 .router-link-active {
     text-decoration: none;
+}
+
+
+@media screen and (max-width:1440px){
+
+}
+@media screen and (max-width:1024px){
+    .nav-right{
+        display: none;
+    }
+    .brand-logo{
+        left:50%;
+        margin-left:-6rem;
+    }
+}
+
+@media screen and (max-width:640px){
+
 }
 </style>

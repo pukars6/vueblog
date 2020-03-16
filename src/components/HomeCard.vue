@@ -97,10 +97,10 @@ export default {
 .homecard{
     border-radius: .8rem;
     box-shadow: 0 1rem 1rem rgba(50, 50, 93, .1), 0 5px 15px rgba(0, 0, 0, .07) !important;
-    padding: 2rem 3rem;
+    padding: 2rem 2rem;
     margin:0 auto;
     height: auto;
-    width: 84%;
+    width: 74%;
     z-index: 1;
     background: #fff;
     /* position: absolute; */
@@ -109,7 +109,6 @@ export default {
 
 .recommend-music{
     margin-top: 2rem;
-    margin-bottom: 4rem;
     text-align: center;
     width: 100%;
     height: auto;
@@ -124,13 +123,12 @@ export default {
 
 .recommend-music-body{
     color: #34495e;
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 700;
     
 }
 
 .homecard-player-body{
-    
     text-align: left;
     width: 60%;
     height: auto;
@@ -140,6 +138,7 @@ export default {
 }
 
 .homecard-player{
+
     margin-top: 1.6rem;
     margin:0;
     font-family: 'Microsoft YaHei';
@@ -155,7 +154,7 @@ export default {
 }
 
 .recommend-post{
-    margin-top: 6rem;
+    margin-top: 4rem;
     margin-bottom: 2rem;
     text-align: center;
     width: 100%;
@@ -164,13 +163,13 @@ export default {
 
 .recommend-post-article{
     color: #34495e;
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 700;
     
 }
 
 .homecard-post-body{
-    /* margin-top: 2rem; */
+    margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
 
@@ -187,9 +186,9 @@ export default {
 }
 
 .homecard-post-item{
-    padding: 2.4rem;
+    padding:1.2rem 1.6rem ;
     width: 50%;
-    height:26rem;
+    height:22rem;
 
 }
 
@@ -201,8 +200,7 @@ export default {
     justify-content: space-around;
     width: 100%;
     height: 100%;
-    border-radius: 1.2rem;
-    background-color:blue ;
+    border-radius: 1rem;
     background-repeat:no-repeat;
     background-size:100% 100%;
     
@@ -260,10 +258,42 @@ export default {
 }
 .recomment-post-card .card-title{
     color: white;
-    font-size: 2rem;
-    font-weight: bold;
-    line-height: 2.6rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 2rem;
 }
 
+@media screen and (max-width:1440px){
+    .homecard{
+        width: 80%;
+    }
+    .homecard-post-item{
+        padding: 1.2rem 1.0rem;
+    }
+}
+@media screen and (max-width:1024px){
+    .homecard{
+        width: 86%;
+    }
+    .homecard-post-item{
+        padding:1.2rem .8rem;
+    }
+}
+
+@media screen and (max-width:640px){
+    .homecard{
+        width: 94%;
+    }
+    .homecard-post-item{
+        width: 100%;
+        padding: 1.2rem 0;
+    }
+    .homecard-player-body{
+        width: 100%;
+    }
+    .recommend-music{
+    margin-top: .4rem;
+}
+}
 
 </style>

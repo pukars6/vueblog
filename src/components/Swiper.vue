@@ -45,13 +45,13 @@ export default {
                 {
                     title:'PUKARS BlOG',
                     description:'No Bug No Life',
-                    imgurl:require('../assets/img/swiper/5.jpg')
+                    imgurl:require('../assets/img/swiper/1.jpg')
                 },
                 
                 {
                     title:'主题参考',
                     description:'基于 Hexo 的 hexo-theme-matery主题',
-                    imgurl:require('../assets/img/swiper/2.jpg')
+                    imgurl:require('../assets/img/swiper/6.jpg')
                 },
                 {
                     title:'关于本站',
@@ -92,7 +92,7 @@ export default {
     color: white;
     position: absolute;
     width: 100%;
-    top:25%;
+    top:30%;
     text-align: center;
 
 
@@ -107,8 +107,8 @@ export default {
     height: auto;
     width: 50%;
     margin:0 auto;
-    font-size: 5rem;
-    line-height: 6rem;
+    font-size: 3.2rem;
+    line-height: 4rem;
     font-weight: 700;
 }
 
@@ -122,7 +122,7 @@ export default {
     height: auto;
     width:75%;
     margin:0 auto;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 300;
     line-height: 2rem;
     margin-top: 2rem;
@@ -175,4 +175,45 @@ export default {
     height:10px !important;
 }
 
+
+@media screen and (max-width:1440px){
+    .swiper-title{
+        font-size: 3rem;
+    }
+    .swiper-read-info{
+        margin-top: 1.8rem;
+    }
+}
+@media screen and (max-width:1024px){
+    .swiper-title{
+        font-size: 2.4rem;
+    }
+
+
+}
+
+@media screen and (max-width:640px){
+    .swiper-title{
+        font-size: 1.6rem;
+        font-size: 2rem;
+    }
+    .swiper-read-info{
+        font-size: 1.2rem;
+        margin-top: 0;
+    }
+    .swiper-read-btn{
+        font-family: "Microsoft YaHei";
+        margin-top: .8rem;
+        font-size: .7rem;
+
+        border: .06rem solid #fff;
+        border-radius: 2rem;
+        width: 5rem;
+        height:1.8rem;
+    }
+    .swiper-img-item{
+    top:-4%;
+    }
+
+}
 </style>

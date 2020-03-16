@@ -18,7 +18,7 @@ export default {
 }
 .post-list-container{
     background: gray;
-    width: 84%;
+    width: 74%;
     height:300px;
     margin:0 auto;
 }
