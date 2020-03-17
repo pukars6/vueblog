@@ -8,7 +8,7 @@
             <m-postlist>
             </m-postlist>
         </div>
-        
+        <m-footer></m-footer>
     </div>
 </template>
 
@@ -26,7 +26,7 @@ export default {
 <style>
 
 .home-content{
-
+    padding-bottom: 2rem;
     margin-top: -2rem;
     width: 100%;
     height: auto;

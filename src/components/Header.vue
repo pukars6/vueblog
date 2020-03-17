@@ -1,5 +1,21 @@
 <template>
     <div class="header" :class="{ showheader:showBackground}">
+        <el-backtop>
+            <div
+            style="{
+                height: 100%;
+                width: 100%;
+                border-radius:50%;
+                background-color: #FF4E49;
+                box-shadow: 0 0 6px rgba(0,0,0, .12);
+                text-align: center;
+                line-height: 3rem;
+                color: #fff;
+            }"
+            >
+            UP
+            </div>
+        </el-backtop>
         <div class="brand-logo">
             <img class="header-logo" :src=logourl />
             <span class="logo-span">PUKARS</span>
@@ -12,6 +28,12 @@
             </div>
            </router-link>
        </div>
+       <div class="header-mobile">
+           <div class="mobile-menu-btn">
+               <i class="el-icon-menu menu-btn-icon"></i>
+           </div>
+       </div>
+       
     </div>
 </template>
 
@@ -124,6 +146,25 @@ export default {
     text-decoration: none;
 }
 
+.header-mobile{
+    display: none;
+    color: #fff;
+    position: absolute;
+    width: 2rem;
+    height: 23rem;
+    font-size: 2rem;
+    top:.8rem;
+}
+
+.mobile-menu-btn{
+    width: 100%;
+    height: 100%;
+}
+
+.el-backtop{
+    width:3rem !important;
+    height:3rem !important;
+}
 
 @media screen and (max-width:1440px){
 
@@ -136,9 +177,16 @@ export default {
         left:50%;
         margin-left:-6rem;
     }
+    .header{
+        padding:0 1rem;
+    }
+    .header-mobile{
+    display: block;
+    }
 }
 
 @media screen and (max-width:640px){
 
+    
 }
 </style>

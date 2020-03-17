@@ -8,11 +8,10 @@
                 </div>
             </div>
             <div class="recommend-post">
-                <span class="recommend-post-article"><i class="el-icon-sunny recommend-post-article-icon"></i>推荐文章</span>
+                <span class="recommend-post-article" ><i class="el-icon-sunny recommend-post-article-icon"></i>热门文章</span>
                  <div class="homecard-post-body">
-                         <div :key="index" v-for="(item,index) in postList" class="homecard-post-item">
-                             
-                            <div class="recomment-post-card">
+                        <div :key="index" v-for="(item,index) in postList" class="homecard-post-item">
+                            <div class="reveal-bottom recomment-post-card ">
                                 <div class="post-img-body">
                                  <img class="post-img" :src="item.imgUrl" alt="">
                                 </div>
@@ -34,7 +33,9 @@
 </template>
 
 <script>
+import scrollReveal from 'scrollreveal';
 export default {
+    
     data() {
         return {
             audio: [
@@ -77,8 +78,29 @@ export default {
             title:'一些练手小项目的汇总',
             category:"生活杂谈"
         }
-        ]
+        ],
+        scrollReveal: scrollReveal()
         };
+    },
+    mounted() {
+    this.scrollReveal.reveal('.reveal-bottom', {
+        // 动画的时长
+        duration: 500,
+        // 延迟时间
+        delay: 300,
+        // 动画开始的位置，'bottom', 'left', 'top', 'right'
+        origin: 'bottom',
+        // 回滚的时候是否再次触发动画
+        reset: true,
+        // 在移动端是否使用动画
+        mobile: true,
+        // 滚动的距离，单位可以用%，rem等
+        distance: '5rem',
+        // 其他可用的动画效果
+        opacity: 0.001,
+        easing: 'linear',
+        scale: 0.9,
+    });
     },
 }
 </script>
@@ -97,7 +119,7 @@ export default {
 .homecard{
     border-radius: .8rem;
     box-shadow: 0 1rem 1rem rgba(50, 50, 93, .1), 0 5px 15px rgba(0, 0, 0, .07) !important;
-    padding: 2rem 2rem;
+    padding: 2rem 2rem 0;
     margin:0 auto;
     height: auto;
     width: 74%;
@@ -155,6 +177,7 @@ export default {
 
 .recommend-post{
     margin-top: 4rem;
+    padding-bottom: 1.2rem;
     margin-bottom: 2rem;
     text-align: center;
     width: 100%;
@@ -186,6 +209,7 @@ export default {
 }
 
 .homecard-post-item{
+    
     padding:1.2rem 1.6rem ;
     width: 50%;
     height:22rem;
@@ -193,6 +217,7 @@ export default {
 }
 
 .recomment-post-card{
+    box-shadow: 0 1rem 2rem rgba(50, 50, 93, .1), 0 .5rem 1rem rgba(0, 0, 0, .07);
     overflow: hidden;
     position: relative;
     display: flex;
@@ -240,8 +265,6 @@ export default {
     width: 8rem;
     height: 3rem;
 }
-.card-button:hover{
-}
 
 .post-btn-icon{
     margin-right: .4rem;
@@ -283,17 +306,37 @@ export default {
 @media screen and (max-width:640px){
     .homecard{
         width: 94%;
+        padding: 1rem 1rem .2rem;
+    }
+    .recommend-music-body{
+        font-size: 1.8rem;
     }
     .homecard-post-item{
         width: 100%;
-        padding: 1.2rem 0;
+        padding: 1.2rem 0 0;
     }
     .homecard-player-body{
         width: 100%;
     }
+    .recommend-post{
+    padding-bottom: 0;
+
+    }
+    .recommend-post-article{
+        font-size: 1.8rem;
+    }
     .recommend-music{
     margin-top: .4rem;
-}
+    }
+    .post-info{
+        left: 0;
+        width: 100%;
+    }
+    .card-button{
+        width: 7rem;
+        height: 2.8rem;
+        font-size: 1rem;
+    }
 }
 
 </style>

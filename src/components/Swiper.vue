@@ -40,6 +40,7 @@ export default {
                     },
                     //开启循环模式
                     loop: true,
+                    height: window.innerHeight
                 },
             carouselArr:[
                 {
@@ -69,8 +70,8 @@ export default {
 <style>
 .swiper-wrapper{
     width: 100%;
-    height: auto;
-    max-height: 100vh;
+    height: 100vh;
+    /* max-height: 100vh; */
    
 }
 
@@ -107,7 +108,7 @@ export default {
     height: auto;
     width: 50%;
     margin:0 auto;
-    font-size: 3.2rem;
+    font-size: 4rem;
     line-height: 4rem;
     font-weight: 700;
 }
@@ -153,7 +154,7 @@ export default {
     bottom: 0;
     left: 0px;
     right: 0px;
-    background: rgba(135, 61, 145, 0.8);
+    background: rgba(255, 120, 0, 0.7);
     height: 100%;
     z-index: 0;
 }
@@ -178,41 +179,43 @@ export default {
 
 @media screen and (max-width:1440px){
     .swiper-title{
-        font-size: 3rem;
+        font-size: 4rem;
     }
     .swiper-read-info{
         margin-top: 1.8rem;
     }
+    .swiper-img-item{
+    height: 100vh;
+    top:-4%;
+    }
 }
 @media screen and (max-width:1024px){
     .swiper-title{
-        font-size: 2.4rem;
+        font-size: 4rem;
     }
 
+   
 
 }
 
 @media screen and (max-width:640px){
     .swiper-title{
-        font-size: 1.6rem;
-        font-size: 2rem;
+        width: 94%;
+        font-size: 2.8rem;
     }
     .swiper-read-info{
-        font-size: 1.2rem;
-        margin-top: 0;
+        font-size: 1.6rem;
+        margin-top: 1rem;
     }
     .swiper-read-btn{
         font-family: "Microsoft YaHei";
-        margin-top: .8rem;
-        font-size: .7rem;
+        margin-top: 2rem;
+        font-size: .9rem;
 
         border: .06rem solid #fff;
         border-radius: 2rem;
-        width: 5rem;
-        height:1.8rem;
-    }
-    .swiper-img-item{
-    top:-4%;
+        width: 6.4rem;
+        height:2.4rem;
     }
 
 }
