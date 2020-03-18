@@ -24,13 +24,13 @@ export default {
 
 .footer{
     background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
-    padding:1rem 0;
+    padding:.6rem 0;
     height: auto;
     width: 100%;
 }
 
 .info{
-    font-size: 1rem;
+    font-size: .9rem;
     line-height:1.5rem;
     text-align: center;
     color:#dbdbdb;;

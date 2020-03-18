@@ -1,7 +1,14 @@
 <template>
   <div class="post-list">
-      <div class=" post-list-container">
-            <div class="post-item post-reveal-bottom" :key="index" v-for="(item,index) in postList" >
+      <div class=" post-list-container" >
+            <div 
+            class="post-item post-reveal-bottom" 
+            :key="index" 
+            v-for="(item,index) in postList" 
+            v-loading="loading"
+            element-loading-text="加载文章中"
+            element-loading-background="rgba(255, 255, 255, .9)"
+            >
                     <router-link class="item-header" to="/">
                         <img class="item-img" :src="item.imgUrl" alt="">
                         <div class="item-title">{{item.title}}</div>
@@ -41,7 +48,8 @@ export default {
     data(){
         return{
             scrollReveal: scrollReveal(),
-            postList:[{}]
+            postList:[{}],
+            loading:true
             }
     },
     method:{
@@ -68,11 +76,16 @@ export default {
     },
     created(){
         this.axios.get(servicePath.getPostList,{
-            page:'1',
-            pageSize:'9'
+            params:{
+                page:1,
+                pageSize:9
+            }
+            
         })
         .then((res=>{
-                 this.postList = res.data.rows
+                this.postList = res.data.rows
+                 this.loading = false
+               
            }))
          
     }
@@ -220,6 +233,28 @@ export default {
     color:#fff;
     background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
 
+}
+
+@media screen and (max-width:1440px){
+
+}
+
+@media screen and (max-width:1024px){
+    .post-list-container{
+        width: 80%;
+    }
+    .post-item{
+        width: 45%;
+    }
+}
+
+@media screen and (max-width:640px){
+    .post-list-container{
+        width: 80%;
+    }
+    .post-item{
+        width: 100%;
+    }
 }
 
 </style>

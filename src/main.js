@@ -16,9 +16,11 @@ import Footer from './components/Footer.vue'
 
 import {Icon} from 'element-ui'
 import {Backtop} from 'element-ui'
+import {Loading} from 'element-ui'
 
 Vue.use(Icon);
 Vue.use(Backtop);
+Vue.use(Loading);
 
 
 Vue.prototype.axios = axios;

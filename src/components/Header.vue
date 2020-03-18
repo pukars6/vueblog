@@ -30,10 +30,22 @@
        </div>
        <div class="header-mobile">
            <div class="mobile-menu-btn">
-               <i class="el-icon-menu menu-btn-icon"></i>
+               <i class="el-icon-menu menu-btn-icon" @click="showSideBar()"></i>
            </div>
        </div>
-       
+       <div class="mobile-nav" :style="{'left':SideBarLeft}">
+           <i class="el-icon-close mobile-close-icon"  @click="hideSideBar()"></i>
+            <div class="mobile-info"><h1>PUKARS</h1><p>No Bug No Life</p></div>
+            <div class="mobile-navlist">
+                <router-link :key="item.name" v-for="(item) in navItemList" class="mobile-nav-link" :to="{path:'/'}"> 
+                    <div class="mobile-navitem">
+                        <i :class="item.icon" class="mobile-nav-icon"></i>
+                        {{item.name}}
+                    </div>
+                </router-link>
+            </div>
+           
+       </div>
     </div>
 </template>
 
@@ -49,9 +61,10 @@ export default {
                 {name:'归档',icon:'el-icon-notebook-1'},
                 {name:'关于',icon:'el-icon-s-custom'},
                 {name:'友情链接',icon:'el-icon-position'},
-                {icon:'el-icon-search'}
+                {name:'搜索',icon:'el-icon-search'}
             ],
-            showBackground:false
+            showBackground:false,
+            SideBarLeft:'-16rem',
 
         }
     },
@@ -60,6 +73,13 @@ export default {
         var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
         // console.log("scrollTop:"+scrollTop)
         scrollTop >100? this.showBackground =true: this.showBackground =false
+        },
+        hideSideBar(){
+            this.SideBarLeft = '-16rem'
+            this.SideBarBackGround='none'
+        },
+        showSideBar(){
+            this.SideBarLeft = '0'
         }
     },
     mounted:function (){
@@ -86,6 +106,7 @@ export default {
 }
 
 .brand-logo{
+    cursor: pointer;
     width: 12rem;
     text-align: center;
     font-family: "Microsoft YaHei";
@@ -161,9 +182,71 @@ export default {
     height: 100%;
 }
 
+.menu-btn-icon{
+    cursor: pointer;
+}
+
 .el-backtop{
     width:3rem !important;
     height:3rem !important;
+}
+
+
+.mobile-nav {
+    transition: all .6s;
+    position: absolute;
+    z-index:3;
+    width: 16rem;
+    height: 100vh;
+    background: #fff;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 7px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.mobile-close-icon{
+    cursor: pointer;
+    color: #fff;
+    font-size: 2.4rem;
+    position: absolute;
+    right: 1rem;
+    top:1.2rem;
+}
+
+.mobile-info{
+        padding: 1rem;
+        padding-bottom: 2rem;
+        width: 100%;
+        height:auto;
+        background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+}
+.mobile-info h1{
+       color: #fff;
+}
+.mobile-info p{
+       color: #eeeeee;
+}
+
+.mobile-navlist{
+    display: block;
+    background: #fff;
+    width: 100%;
+    height: auto;
+}
+
+.mobile-nav-link{
+    color: #34495e !important;
+    line-height: 3.2rem;
+    padding: .4rem 1.6rem;
+    text-align: left;
+    display: block;
+    width: 100%;
+    height: 4rem;
+}
+.mobile-nav-link:hover{
+    background-color: rgb(242,242,242);
+}
+
+.mobile-nav-icon{
+    margin-right: 3.6rem;
 }
 
 @media screen and (max-width:1440px){
@@ -171,7 +254,7 @@ export default {
 }
 @media screen and (max-width:1024px){
     .nav-right{
-        display: none;
+        display:none;
     }
     .brand-logo{
         left:50%;
@@ -183,7 +266,10 @@ export default {
     .header-mobile{
     display: block;
     }
+    
 }
+
+
 
 @media screen and (max-width:640px){
 

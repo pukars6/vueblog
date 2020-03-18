@@ -19,6 +19,7 @@
                                     <div class="post-info-detail">
                                         <span class="card-category">{{item.category}}</span>
                                         <h3 class="card-title">{{item.title}}</h3>
+                                        <h3 class="card-content">{{item.content}}</h3>
                                     </div>
                                     <div class="post-btn-detail"></div>
                                     <button class="card-button"><i class="el-icon-view post-btn-icon"></i>阅读更多</button>
@@ -34,6 +35,7 @@
 
 <script>
 import scrollReveal from 'scrollreveal';
+import servicePath from '../config/apiUrl'
 export default {
     
     data() {
@@ -61,31 +63,16 @@ export default {
             lrc: 'https://cdn.moefe.org/music/lrc/kiss.lrc',
             },
         ],
-        postList:[{
-            imgUrl:require('../assets/img/swiper/1.jpg'),
-            title:'如何用 es6+ 写出优雅的 js 代码',
-            category:"算法设计"
-        },{
-            imgUrl:require('../assets/img/swiper/2.jpg'),
-            title:'利用 github webhooks 实现自动化部署',
-            category:"前端"
-        },{
-            imgUrl:require('../assets/img/swiper/3.jpg'),
-            title:'实现 ssh 免密登陆服务器',
-            category:"后端"
-        },{
-            imgUrl:require('../assets/img/swiper/4.jpg'),
-            title:'一些练手小项目的汇总',
-            category:"生活杂谈"
-        }
+        postList:[
         ],
-        scrollReveal: scrollReveal()
+        scrollReveal: scrollReveal(),
+        loading:false
         };
     },
     mounted() {
     this.scrollReveal.reveal('.reveal-bottom', {
         // 动画的时长
-        duration: 500,
+        duration: 400,
         // 延迟时间
         delay: 300,
         // 动画开始的位置，'bottom', 'left', 'top', 'right'
@@ -95,13 +82,49 @@ export default {
         // 在移动端是否使用动画
         mobile: true,
         // 滚动的距离，单位可以用%，rem等
-        distance: '5rem',
+        distance: '3rem',
         // 其他可用的动画效果
         opacity: 0.001,
         easing: 'linear',
         scale: 0.9,
     });
     },
+    updated(){
+        this.scrollReveal.reveal('.reveal-bottom', {
+        // 动画的时长
+        duration: 400,
+        // 延迟时间
+        delay: 300,
+        // 动画开始的位置，'bottom', 'left', 'top', 'right'
+        origin: 'bottom',
+        // 回滚的时候是否再次触发动画
+        reset: true,
+        // 在移动端是否使用动画
+        mobile: true,
+        // 滚动的距离，单位可以用%，rem等
+        distance: '3rem',
+        // 其他可用的动画效果
+        opacity: 0.001,
+        easing: 'linear',
+        scale: 0.9,
+    });
+    },
+    created(){
+        this.axios.get(servicePath.getPostList,{
+            params:{
+                page:1,
+                pageSize:4,
+                order:'viewCount DESC'
+            }
+            
+        })
+        .then((res=>{
+                this.postList = res.data.rows
+                 this.loading = false
+               
+           }))
+         
+    }
 }
 </script>
 
@@ -249,6 +272,13 @@ export default {
 
 .post-btn-detail{
     width: 100%;
+}
+
+.card-content{
+    font-weight: 400;
+    margin:1rem 1rem;
+    color: hsla(0, 0%, 100%, .78) !important;
+    font-size: .9rem;
 }
 
 .card-button{
