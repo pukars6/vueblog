@@ -9,7 +9,9 @@
             </div>
             <div class="recommend-post">
                 <span class="recommend-post-article" ><i class="el-icon-sunny recommend-post-article-icon"></i>热门文章</span>
-                 <div class="homecard-post-body">
+                 <div 
+                 class="homecard-post-body"
+                 >
                         <div :key="index" v-for="(item,index) in postList" class="homecard-post-item">
                             <div class="reveal-bottom recomment-post-card ">
                                 <div class="post-img-body">
@@ -22,7 +24,7 @@
                                         <h3 class="card-content">{{item.content}}</h3>
                                     </div>
                                     <div class="post-btn-detail"></div>
-                                    <button class="card-button"><i class="el-icon-view post-btn-icon"></i>阅读更多</button>
+                                    <button class="card-button" @click="jumpToDetail(item.id)"><i class="el-icon-view post-btn-icon"></i>阅读更多</button>
                                 </div>
                             </div>
                          </div>
@@ -40,6 +42,7 @@ export default {
     
     data() {
         return {
+            //aplayer内容
             audio: [
             {
             name: '东西（Cover：林俊呈）',
@@ -62,14 +65,20 @@ export default {
             cover: 'https://p1.music.126.net/K0-IPcIQ9QFvA0jXTBqoWQ==/109951163636756693.jpg?param=300y300', // prettier-ignore
             lrc: 'https://cdn.moefe.org/music/lrc/kiss.lrc',
             },
-        ],
-        postList:[
-        ],
-        scrollReveal: scrollReveal(),
-        loading:false
+            ],
+            postList:[
+            ],
+            scrollReveal: scrollReveal(),
         };
     },
+    methods:{
+        //跳转post详情页
+        jumpToDetail(id){
+            this.$router.push('/post/'+id)
+        }
+    },
     mounted() {
+    // wowjs动画
     this.scrollReveal.reveal('.reveal-bottom', {
         // 动画的时长
         duration: 400,
@@ -90,6 +99,7 @@ export default {
     });
     },
     updated(){
+        // mounted更新postList后需要重新加载渲染
         this.scrollReveal.reveal('.reveal-bottom', {
         // 动画的时长
         duration: 400,
@@ -110,6 +120,7 @@ export default {
     });
     },
     created(){
+        //获取热门文章列表
         this.axios.get(servicePath.getPostList,{
             params:{
                 page:1,

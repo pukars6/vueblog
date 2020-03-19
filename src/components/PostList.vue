@@ -7,9 +7,10 @@
             v-for="(item,index) in postList" 
             v-loading="loading"
             element-loading-text="加载文章中"
+            customClass = "postlist-loading"
             element-loading-background="rgba(255, 255, 255, .9)"
             >
-                    <router-link class="item-header" to="/">
+                    <router-link class="item-header" :to="{path:'/post/'+item.id}">
                         <img class="item-img" :src="item.imgUrl" alt="">
                         <div class="item-title">{{item.title}}</div>
                     </router-link> 
@@ -55,6 +56,7 @@ export default {
     method:{
     },
     updated(){
+        // mounted更新postList后需要重新加载渲染
           this.scrollReveal.reveal('.post-reveal-bottom', {
             // 动画的时长
             duration:600,
@@ -75,6 +77,7 @@ export default {
         });
     },
     created(){
+        // 获取最新文章列表
         this.axios.get(servicePath.getPostList,{
             params:{
                 page:1,
@@ -227,12 +230,21 @@ export default {
     width: 10rem;
     height: 3rem;
 }
+
 .loading-btn:hover{
     text-decoration: none;
     cursor: pointer;
     color:#fff;
     background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
 
+}
+
+.circular .path{
+    stroke:rgb(130, 130, 130) !important
+}
+
+.el-loading-text{
+    color:rgb(130, 130, 130) !important
 }
 
 @media screen and (max-width:1440px){

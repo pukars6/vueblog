@@ -15,8 +15,6 @@
 <script>
 
 export default {
-   
-    
     destroyed () {
     window.removeEventListener('scroll', this.handleScroll); // 离开页面 关闭监听 不然会报错
 }

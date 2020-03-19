@@ -21,7 +21,7 @@
             <span class="logo-span">PUKARS</span>
         </div>
        <div class="nav-right">
-           <router-link :key="item.name" v-for="(item) in navItemList" class="navitem-link" :to="{path:'/'}">
+           <router-link :key="item.name" v-for="(item) in navItemList" class="navitem-link" :to="{path:item.url}">
             <div class="navitem">
                 <i :class="item.icon"></i>
                 {{item.name}}
@@ -55,13 +55,13 @@ export default {
         return{
             logourl:require('../assets/nav-logo.png'),
             navItemList:[
-                {name:'首页',icon:'el-icon-s-home'},
-                {name:'标签',icon:'el-icon-collection-tag'},
-                {name:'分类',icon:'el-icon-folder-opened'},
-                {name:'归档',icon:'el-icon-notebook-1'},
-                {name:'关于',icon:'el-icon-s-custom'},
-                {name:'友情链接',icon:'el-icon-position'},
-                {name:'搜索',icon:'el-icon-search'}
+                {name:'首页',icon:'el-icon-s-home',url:'/'},
+                {name:'标签',icon:'el-icon-collection-tag',url:'/'},
+                {name:'分类',icon:'el-icon-folder-opened',url:'/'},
+                {name:'归档',icon:'el-icon-notebook-1',url:'/'},
+                {name:'关于',icon:'el-icon-s-custom',url:'/'},
+                {name:'友情链接',icon:'el-icon-position',url:'/'},
+                {name:'搜索',icon:'el-icon-search',url:'/'}
             ],
             showBackground:false,
             SideBarLeft:'-16rem',
@@ -69,15 +69,18 @@ export default {
         }
     },
     methods:{
+        //监测滑动，改变导航栏背景样式
         scrollToTop() {
         var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
         // console.log("scrollTop:"+scrollTop)
         scrollTop >100? this.showBackground =true: this.showBackground =false
         },
+        // mobile点击展示侧边栏
         hideSideBar(){
             this.SideBarLeft = '-16rem'
             this.SideBarBackGround='none'
         },
+        // mobile点击关闭侧边栏
         showSideBar(){
             this.SideBarLeft = '0'
         }
