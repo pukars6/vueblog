@@ -1,14 +1,19 @@
 <template>
   <div class="homecard-container">
+    <a-spin :spinning="spinning" tip="加载中">
       <div class="homecard">
             <div class="recommend-music">
-                <span class="recommend-music-body"><i class="el-icon-headset recommend-music-icon"></i>听听音乐</span>
+                <span class="recommend-music-body">
+                    <a-icon class="recommend-music-icon" type="customer-service" />
+                    听听音乐</span>
                  <div class="homecard-player-body">
                     <aplayer class="homecard-player" :audio="audio" :lrcType="3" />
                 </div>
             </div>
             <div class="recommend-post">
-                <span class="recommend-post-article" ><i class="el-icon-sunny recommend-post-article-icon"></i>热门文章</span>
+                <span class="recommend-post-article" >
+                    <a-icon class="recommend-post-article-icon" type="fire" />
+                    热门文章</span>
                  <div 
                  class="homecard-post-body"
                  >
@@ -32,6 +37,7 @@
             </div>
            
       </div>
+    </a-spin>
   </div>
 </template>
 
@@ -69,6 +75,7 @@ export default {
             postList:[
             ],
             scrollReveal: scrollReveal(),
+            spinning:true
         };
     },
     methods:{
@@ -131,7 +138,7 @@ export default {
         })
         .then((res=>{
                 this.postList = res.data.rows
-                 this.loading = false
+                 this.spinning = false
                
            }))
          

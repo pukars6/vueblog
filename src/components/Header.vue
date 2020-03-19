@@ -1,6 +1,6 @@
 <template>
     <div class="header" :class="{ showheader:showBackground}">
-        <el-backtop>
+        <!-- <el-backtop>
             <div
             style="{
                 height: 100%;
@@ -15,31 +15,32 @@
             >
             UP
             </div>
-        </el-backtop>
+        </el-backtop> -->
+        <a-back-top />
         <div class="brand-logo">
-            <img class="header-logo" :src=logourl />
+            <img class="header-logo" :src="logourl" />
             <span class="logo-span">PUKARS</span>
         </div>
        <div class="nav-right">
            <router-link :key="item.name" v-for="(item) in navItemList" class="navitem-link" :to="{path:item.url}">
             <div class="navitem">
-                <i :class="item.icon"></i>
+                <a-icon :type="item.icon" :theme="item.theme"/>
                 {{item.name}}
             </div>
            </router-link>
        </div>
        <div class="header-mobile">
            <div class="mobile-menu-btn">
-               <i class="el-icon-menu menu-btn-icon" @click="showSideBar()"></i>
+                <a-icon class="menu-btn-icon" type="menu" theme="outlined" @click="showSideBar()"/>
            </div>
        </div>
        <div class="mobile-nav" :style="{'left':SideBarLeft}">
-           <i class="el-icon-close mobile-close-icon"  @click="hideSideBar()"></i>
+            <a-icon class="mobile-close-icon" type="close" theme="outlined" @click="hideSideBar()"/>
             <div class="mobile-info"><h1>PUKARS</h1><p>No Bug No Life</p></div>
             <div class="mobile-navlist">
                 <router-link :key="item.name" v-for="(item) in navItemList" class="mobile-nav-link" :to="{path:'/'}"> 
                     <div class="mobile-navitem">
-                        <i :class="item.icon" class="mobile-nav-icon"></i>
+                        <a-icon  class="mobile-nav-icon" :type="item.icon" />
                         {{item.name}}
                     </div>
                 </router-link>
@@ -55,13 +56,13 @@ export default {
         return{
             logourl:require('../assets/nav-logo.png'),
             navItemList:[
-                {name:'首页',icon:'el-icon-s-home',url:'/'},
-                {name:'标签',icon:'el-icon-collection-tag',url:'/'},
-                {name:'分类',icon:'el-icon-folder-opened',url:'/'},
-                {name:'归档',icon:'el-icon-notebook-1',url:'/'},
-                {name:'关于',icon:'el-icon-s-custom',url:'/'},
-                {name:'友情链接',icon:'el-icon-position',url:'/'},
-                {name:'搜索',icon:'el-icon-search',url:'/'}
+                {name:'首页',icon:'home',url:'/',theme:'filled'},
+                {name:'标签',icon:'tags',url:'/',theme:'filled'},
+                {name:'分类',icon:'folder',url:'/',theme:'filled'},
+                {name:'归档',icon:'hdd',url:'/',theme:'filled'},
+                {name:'关于',icon:'contacts',url:'/',theme:'filled'},
+                {name:'友情链接',icon:'bulb',url:'/',theme:'filled'},
+                {name:'搜索',icon:'search',url:'/',theme:'outlined'}
             ],
             showBackground:false,
             SideBarLeft:'-16rem',
@@ -85,6 +86,7 @@ export default {
             this.SideBarLeft = '0'
         }
     },
+    
     mounted:function (){
         window.addEventListener('scroll', this.scrollToTop)
     },
@@ -121,6 +123,7 @@ export default {
 }
 
 .header-logo{
+    vertical-align: inherit;
     padding-top:.6rem;
     height: 3rem
 
@@ -181,18 +184,11 @@ export default {
 }
 
 .mobile-menu-btn{
+    /* position: relative; */
     width: 100%;
     height: 100%;
 }
 
-.menu-btn-icon{
-    cursor: pointer;
-}
-
-.el-backtop{
-    width:3rem !important;
-    height:3rem !important;
-}
 
 
 .mobile-nav {
@@ -250,6 +246,24 @@ export default {
 
 .mobile-nav-icon{
     margin-right: 3.6rem;
+}
+
+.ant-back-top{
+    width: 3rem;
+    height: 3rem;
+}
+
+.ant-back-top-content{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: linear-gradient(to bottom right, #FF5E3A 0%, #FF2A68 100%);
+}
+
+.ant-back-top-icon{
+    width: 1.6rem;
+    height: 1.6rem;
+
 }
 
 @media screen and (max-width:1440px){

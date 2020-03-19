@@ -1,14 +1,11 @@
 <template>
   <div class="post-list">
+      <a-spin :spinning="spinning" tip="加载中">
       <div class=" post-list-container" >
             <div 
             class="post-item post-reveal-bottom" 
             :key="index" 
             v-for="(item,index) in postList" 
-            v-loading="loading"
-            element-loading-text="加载文章中"
-            customClass = "postlist-loading"
-            element-loading-background="rgba(255, 255, 255, .9)"
             >
                     <router-link class="item-header" :to="{path:'/post/'+item.id}">
                         <img class="item-img" :src="item.imgUrl" alt="">
@@ -20,9 +17,9 @@
                         </div>
                         <div class="item-description">
 
-                            <div class="item-time"><i class="el-icon-time item-icon"></i>{{item.createdAt}}</div>
+                            <div class="item-time"><a-icon class="item-icon" type="clock-circle" />{{item.createdAt}}</div>
                             <div class="item-category">
-                                <i class="el-icon-s-order item-icon"></i>
+                                <a-icon class="item-icon" type="folder" />
                                 <span :key="index" v-for="(cat,index) in item.categories">
                                     {{cat.name}}
                                 </span>
@@ -36,9 +33,7 @@
                     </div>
             </div>
       </div>
-    <!-- <div class="loading">
-        <button class="loading-btn">加载更多</button>
-    </div> -->
+   </a-spin>
   </div>
 </template>
 
@@ -49,8 +44,8 @@ export default {
     data(){
         return{
             scrollReveal: scrollReveal(),
-            postList:[{}],
-            loading:true
+            postList:[],
+            spinning:true
             }
     },
     method:{
@@ -87,7 +82,7 @@ export default {
         })
         .then((res=>{
                 this.postList = res.data.rows
-                 this.loading = false
+                 this.spinning = false
                
            }))
          
@@ -97,6 +92,7 @@ export default {
 
 <style>
 .post-list{
+    min-height: 20vh;
     margin-top: 2rem;
     width: 100%;
     height:auto;
@@ -170,6 +166,7 @@ export default {
 }
 
 .post-item .item-description{
+    line-height: 1.2rem;
     padding:.4rem .1rem;
     border-bottom: 1px solid rgba(160,160,160,0.2);
     display: flex;
@@ -243,7 +240,11 @@ export default {
     stroke:rgb(130, 130, 130) !important
 }
 
-.el-loading-text{
+.ant-spin-dot i{
+    background-color:rgb(130, 130, 130) !important
+}
+
+.ant-spin{
     color:rgb(130, 130, 130) !important
 }
 

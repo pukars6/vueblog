@@ -7,6 +7,7 @@ let ipUrl = 'http://localhost:6060/'
 
 let servicePath = {
     getPostList : ipUrl+'article/list',//首页接口
+    getPostDetail : ipUrl+'article/',//首页接口
 
 }
 
