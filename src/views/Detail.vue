@@ -2,7 +2,9 @@
   <div class="detail-page">
        <m-header></m-header>
        <div class="detail-bg-container" :style="{backgroundImage: 'url('+post.imgUrl+')'}">
+         <a-spin id="detail-bg-loading" :spinning="loading">
          <div class="detail-bg-title">{{post.title}}</div>
+         </a-spin>
        </div>
        <div class="detail-content-container">
          <div class="content-main">
@@ -64,7 +66,7 @@
 <script>
 import marked from 'marked'
 import hljs from 'highlight.js'
-import 'highlight.js/styles/obsidian.css'
+import 'highlight.js/styles/atom-one-dark.css'
 import servicePath from '../config/apiUrl'
 
 import tree from '../components/treelist.vue'
@@ -119,7 +121,6 @@ export default {
         pushItem(list, currentItem)
       })
     this.markDownTitle = list
-    console.log(list)
     }
   },
   mounted(){
@@ -141,6 +142,10 @@ export default {
       );
       
     },
+    updated(){
+      
+    }
+    ,
   created(){
     const postid = this.$route.params.id
     //  获取文章详情
@@ -164,7 +169,8 @@ export default {
 }
 
 .detail-bg-container{
-  filter: brightness(.84);
+  text-align: center;
+  filter: brightness(.8);
   position: relative;
   display: flex;
   justify-content: center;
@@ -176,7 +182,7 @@ export default {
   
 }
 
-.detail-bg-container:after {
+.detail-bg-container:before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -187,13 +193,24 @@ export default {
     z-index: 0;
 }
 
+#detail-bg-loading .ant-spin-dot{
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+#detail-bg-loading .ant-spin-dot i{
+    color: #fff !important;
+    background-color: #fff;
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
 .detail-bg-title{
   z-index: 1;
   text-align: center;
-  /* font-weight: 300; */
   line-height: 1.4em;
   color: #fff;
-  font-size: 2.4rem;
+  font-size: 2.5rem;
 }
 
 .detail-content-container{
@@ -203,6 +220,8 @@ export default {
   margin: 0 auto;
   max-width: 1250px;
 }
+
+
 
 .content-main{
     display: flex;
@@ -219,7 +238,7 @@ export default {
 }
 .content-main .content-right{
   width: 25%;
-  height: 1000px;
+  height: auto;
   /* margin-left: auto;
   left: auto;
   right: auto; */

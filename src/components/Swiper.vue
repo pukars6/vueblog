@@ -46,18 +46,18 @@ export default {
                 {
                     title:'PUKARS BlOG',
                     description:'No Bug No Life',
-                    imgurl:require('../assets/img/swiper/1.jpg')
+                    imgurl:require('../../assets/img/swiper/1.jpg')
                 },
                 
                 {
                     title:'主题参考',
                     description:'基于 Hexo 的 hexo-theme-matery主题',
-                    imgurl:require('../assets/img/swiper/6.jpg')
+                    imgurl:require('../../assets/img/swiper/6.jpg')
                 },
                 {
                     title:'关于本站',
                     description:'Just For Practice',
-                    imgurl:require('../assets/img/swiper/4.jpg')
+                    imgurl:require('../../assets/img/swiper/4.jpg')
                 }
 
             ],

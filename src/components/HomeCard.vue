@@ -1,6 +1,6 @@
 <template>
   <div class="homecard-container">
-    <a-spin :spinning="spinning" tip="加载中">
+    <a-spin :spinning="spinning" id="homecard-loading">
       <div class="homecard">
             <div class="recommend-music">
                 <span class="recommend-music-body">
@@ -215,6 +215,18 @@ export default {
 .aplayer-author{
     font-size: .8rem !important;
 }
+
+#homecard-loading .ant-spin-dot{
+     width: 2.2rem;
+    height: 2.2rem;
+  }
+
+#homecard-loading .ant-spin-dot i{
+    color: #fff !important;
+    background-color:rgb(130, 130, 130);
+    width: 1rem;
+    height: 1rem;
+  }
 
 .recommend-post{
     margin-top: 4rem;

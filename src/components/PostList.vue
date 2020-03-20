@@ -1,6 +1,6 @@
 <template>
   <div class="post-list">
-      <a-spin :spinning="spinning" tip="加载中">
+      <a-spin :spinning="spinning"  id="postlist-loading">
       <div class=" post-list-container" >
             <div 
             class="post-item post-reveal-bottom" 
@@ -240,9 +240,17 @@ export default {
     stroke:rgb(130, 130, 130) !important
 }
 
-.ant-spin-dot i{
-    background-color:rgb(130, 130, 130) !important
-}
+#postlist-loading .ant-spin-dot{
+     width: 2.2rem;
+    height: 2.2rem;
+  }
+
+#postlist-loading .ant-spin-dot i{
+    color: #fff !important;
+    background-color:rgb(130, 130, 130);
+    width: 1rem;
+    height: 1rem;
+  }
 
 .ant-spin{
     color:rgb(130, 130, 130) !important

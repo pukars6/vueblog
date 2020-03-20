@@ -7,9 +7,10 @@ module.exports = {
     configureWebpack: {
         externals: {
             'marked': 'marked',
-            'highlight': 'highlight'
+            'highlight': 'highlight',
           }
-      }
+      },
+    
     
 
 }

@@ -47,6 +47,15 @@ Vue.component('m-homecard',HomeCard)
 Vue.component('m-swiper',Swiper)
 Vue.component('m-postlist',PostList)
 
+
+router.beforeEach((to, from, next) => {
+  /* 路由发生变化修改页面title */
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+  next()
+})
+
 //跳转页面后回到顶部
 router.afterEach((to,from,next) => {
   window.scrollTo(0,0);

@@ -17,7 +17,7 @@
             </div>
         </el-backtop> -->
         <a-back-top />
-        <div class="brand-logo">
+        <div class="brand-logo" @click="jumpToHome()">
             <img class="header-logo" :src="logourl" />
             <span class="logo-span">PUKARS</span>
         </div>
@@ -54,15 +54,15 @@
 export default {
     data(){
         return{
-            logourl:require('../assets/nav-logo.png'),
+            logourl:require('../../assets/nav-logo.png'),
             navItemList:[
                 {name:'首页',icon:'home',url:'/',theme:'filled'},
-                {name:'标签',icon:'tags',url:'/',theme:'filled'},
-                {name:'分类',icon:'folder',url:'/',theme:'filled'},
-                {name:'归档',icon:'hdd',url:'/',theme:'filled'},
-                {name:'关于',icon:'contacts',url:'/',theme:'filled'},
-                {name:'友情链接',icon:'bulb',url:'/',theme:'filled'},
-                {name:'搜索',icon:'search',url:'/',theme:'outlined'}
+                {name:'标签',icon:'tags',url:'/tag',theme:'filled'},
+                {name:'分类',icon:'folder',url:'/category',theme:'filled'},
+                {name:'归档',icon:'hdd',url:'/archives',theme:'filled'},
+                {name:'关于',icon:'contacts',url:'/about',theme:'filled'},
+                {name:'友情链接',icon:'bulb',url:'/friend',theme:'filled'},
+                {name:'搜索',icon:'search',url:'/search',theme:'outlined'}
             ],
             showBackground:false,
             SideBarLeft:'-16rem',
@@ -84,6 +84,9 @@ export default {
         // mobile点击关闭侧边栏
         showSideBar(){
             this.SideBarLeft = '0'
+        },
+        jumpToHome(){
+            this.$router.push('/')
         }
     },
     
@@ -98,7 +101,7 @@ export default {
     transition: all .4s;
     width: 100%;
     height:4rem;
-    z-index: 2;
+    z-index: 3;
     position: fixed;
     padding: 0 7rem;
     top:0;
@@ -161,6 +164,7 @@ export default {
 }
 
 .navitem:hover{
+    color: #fff;
     background: rgba(0, 0, 0, 0.2)
 }
 
