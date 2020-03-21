@@ -10,7 +10,7 @@ import Category from './views/Category.vue'
 Vue.use(Router)
 
 const router = new Router({
-    mode:'hash',//路由模式，nginx需要配置
+    mode:'history',//路由模式，nginx需要配置
     routes:[
         {
             path:'/',
