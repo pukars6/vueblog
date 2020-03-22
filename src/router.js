@@ -36,7 +36,7 @@ const router = new Router({
             component:Tag,
             meta:{
                 // 页面标题title
-                title: 'PUKARS的博客'
+                title: '文章标签 | PUKARS的博客'
             }
         },
         {
@@ -45,7 +45,7 @@ const router = new Router({
             component:Category,
             meta:{
                 // 页面标题title
-                title: 'PUKARS的博客'
+                title: '文章分类 | PUKARS的博客'
             }
         }
     ],

@@ -7,7 +7,9 @@
             :key="index" 
             v-for="(item,index) in postList" 
             >
-                    <router-link class="item-header" :to="{path:'/post/'+item.id}">
+                    <router-link 
+                    class="item-header" 
+                    :to="{path:'/post/'+item.id}">
                         <img class="item-img" :src="item.imgUrl" alt="">
                         <div class="item-title">{{item.title}}</div>
                     </router-link> 
@@ -49,6 +51,10 @@ export default {
             }
     },
     method:{
+        animatePulse(){
+            console.log("1")
+
+        }
     },
     updated(){
         // mounted更新postList后需要重新加载渲染
@@ -72,6 +78,7 @@ export default {
         });
     },
     created(){
+        
         // 获取最新文章列表
         this.axios.get(servicePath.getPostList,{
             params:{
@@ -116,6 +123,7 @@ export default {
     border-bottom-right-radius: .8rem;
     box-shadow: 0 15px 35px rgba(50, 50, 93, .1), 0 5px 15px rgba(0, 0, 0, .07) !important;
 }
+
 
 .post-item .item-header{
     background-color: transparent;

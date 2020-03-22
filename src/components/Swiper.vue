@@ -8,7 +8,7 @@
                     <div class="swiper-content">
                         <span class="swiper-title">{{item.title}}</span>
                         <span class="swiper-read-info">{{item.description}}</span> 
-                        <button class="swiper-read-btn">
+                        <button class="swiper-read-btn" @click="jumpToPage(item.url)">
                             <i class="el-icon-view"></i>
                             阅读更多
                         </button>
@@ -34,7 +34,7 @@ export default {
 
                     //自动轮播
                     autoplay: {
-                      delay: 11000,
+                      delay: 3000,
                       //当用户滑动图片后继续自动轮播
                       disableOnInteraction: false,
                     },
@@ -46,23 +46,31 @@ export default {
                 {
                     title:'PUKARS BlOG',
                     description:'No Bug No Life',
-                    imgurl:require('../../assets/img/swiper/1.jpg')
+                    imgurl:'https://i1.100024.xyz/i/2020/03/21/10pyizr.jpg',
+                    url:'about'
                 },
                 
                 {
                     title:'主题参考',
                     description:'基于 Hexo 的 hexo-theme-matery主题',
-                    imgurl:require('../../assets/img/swiper/6.jpg')
+                    imgurl:'https://i1.100024.xyz/i/2020/03/21/10pzazf.jpg',
+                    url:'about'
                 },
                 {
                     title:'关于本站',
                     description:'Just For Practice',
-                    imgurl:require('../../assets/img/swiper/4.jpg')
+                    imgurl:'https://i1.100024.xyz/i/2020/03/21/10q00mh.jpg',
+                    url:'about'
                 }
 
             ],
         }
     },
+    methods:{
+        jumpToPage(url){
+            this.$router.push('/'+url)
+        }
+    }
 
 }
 </script>

@@ -379,6 +379,7 @@ export default {
         width: 100%;
     }
     .recommend-post{
+    margin-top: 2rem;
     padding-bottom: 0;
 
     }
@@ -386,16 +387,16 @@ export default {
         font-size: 1.8rem;
     }
     .recommend-music{
-    margin-top: .4rem;
+    margin-top: .6rem;
     }
     .post-info{
         left: 0;
         width: 100%;
     }
     .card-button{
-        width: 7rem;
-        height: 2.8rem;
-        font-size: 1rem;
+        width: 6rem;
+        height: 2.6rem;
+        font-size: .9rem;
     }
 }
 

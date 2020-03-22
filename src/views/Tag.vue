@@ -11,6 +11,7 @@
           <div class="tag-cloud">
               <div class="tag-card">
                   <div class="card-title"><a-icon class="cat-icon" type="folder" />文章标签</div>
+                   <a-spin id="tag-loading" :spinning="loading">
                   <div class="card-chips">
                       <router-link v-for="(item,index) in tagList" :key="index" class="chips-item" :to="item.jumpUrl" :style="randomRgb()">
                           <span>{{item.name}}</span>
@@ -18,6 +19,7 @@
                           
                       </router-link>
                   </div>
+                  </a-spin>
               </div>
           </div>
           <div class="tag-radar"></div>
@@ -31,7 +33,8 @@ export default {
     data(){
         return{
             tagBgImgUrl:require('../../assets/img/swiper/1.jpg'),
-            tagList:''
+            tagList:'',
+            loading:true
         }
     },
     methods:{
@@ -56,6 +59,7 @@ export default {
         .then((res=>{
             this.tagList = res.data
             this.addtagUrl(this.tagList)
+            this.loading=false
             // console.log(this.tagList)
         }))
     }
@@ -77,7 +81,7 @@ export default {
   align-items: center;
   height: 60vh;
   background-position: center center;
-  background-size: 100%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   transform: translate3d(0px, 0px, 0px);
   
@@ -115,7 +119,20 @@ export default {
     color: #eee;
 }
 
+#tag-loading .ant-spin-dot{
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+#tag-loading .ant-spin-dot i{
+    color: #ccc !important;
+    background-color: #ccc;
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
 .tag-content{
+    padding-bottom: 2.4rem;
     width: 100%;
     height: auto;
 }
@@ -123,7 +140,7 @@ export default {
 .tag-cloud{
     margin:0 auto;
     width: 74%;
-    height: 1000px;
+    height: auto;
 }
 
 .tag-card{
@@ -140,6 +157,7 @@ export default {
 }
 
 .tag-card .card-title{
+    text-align: center;
     width: 10rem;
     margin:0 auto;
     color: #3C4858;
@@ -188,4 +206,33 @@ export default {
     color: #eee;
     margin-left: .4rem;
 }
+
+@media screen and (max-width:1440px){
+
+}
+@media screen and (max-width:1024px){
+
+    
+}
+
+@media screen and (max-width:640px){
+    .tag-cloud{
+        width: 94%;
+    }
+    .tag-card .card-title{
+        font-size: 1.4rem;
+    }
+    .card-chips{
+        margin:0;
+        padding:1rem;
+    }
+    .tag-bg-title{
+        font-size: 4rem;
+    }
+    .tag-bg-content{
+        font-size: 1.8rem;
+    }
+    
+}
+
 </style>

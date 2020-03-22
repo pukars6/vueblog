@@ -1,5 +1,5 @@
 //公网ip
-let ipUrl = 'http://47.103.24.216:6060/'
+let ipUrl = 'http://wuster.vip/api/'
 //私有ip
 // let ipUrl = 'http://172.19.94.105:7002/web/api/'
 

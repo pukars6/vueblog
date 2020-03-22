@@ -11,6 +11,7 @@
           <div class="category-cloud">
               <div class="category-card">
                   <div class="card-title"><a-icon class="cat-icon" type="folder" />文章分类</div>
+                   <a-spin id="category-loading" :spinning="loading">
                   <div class="card-chips">
                       <router-link v-for="(item,index) in CategoryList" :key="index" class="chips-item" :to="item.jumpUrl" :style="randomRgb()">
                           <span>{{item.name}}</span>
@@ -18,6 +19,7 @@
                           
                       </router-link>
                   </div>
+                  </a-spin>
               </div>
           </div>
           <div class="category-radar"></div>
@@ -31,7 +33,8 @@ export default {
     data(){
         return{
             CategoryBgImgUrl:require('../../assets/img/swiper/1.jpg'),
-            CategoryList:''
+            CategoryList:'',
+            loading:true
         }
     },
     methods:{
@@ -56,6 +59,7 @@ export default {
         .then((res=>{
             this.CategoryList = res.data
             this.addCategoryUrl(this.CategoryList)
+            this.loading=false
             // console.log(this.CategoryList)
         }))
     }
@@ -77,7 +81,7 @@ export default {
   align-items: center;
   height: 60vh;
   background-position: center center;
-  background-size: 100%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   transform: translate3d(0px, 0px, 0px);
   
@@ -115,7 +119,23 @@ export default {
     color: #eee;
 }
 
+
+#category-loading .ant-spin-dot{
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+#category-loading .ant-spin-dot i{
+    color: #ccc !important;
+    background-color: #ccc;
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+
+
 .category-content{
+    padding-bottom: 2.4rem;
     width: 100%;
     height: auto;
 }
@@ -123,7 +143,7 @@ export default {
 .category-cloud{
     margin:0 auto;
     width: 74%;
-    height: 1000px;
+    height: auto;
 }
 
 .category-card{
@@ -140,6 +160,7 @@ export default {
 }
 
 .category-card .card-title{
+    text-align: center;
     width: 10rem;
     margin:0 auto;
     color: #3C4858;
@@ -188,4 +209,35 @@ export default {
     color: #eee;
     margin-left: .4rem;
 }
+
+
+@media screen and (max-width:1440px){
+
+}
+@media screen and (max-width:1024px){
+
+    
+}
+
+@media screen and (max-width:640px){
+    .category-cloud{
+        width: 94%;
+    }
+    .category-card .card-title{
+        font-size: 1.4rem;
+    }
+    .card-chips{
+        margin:0;
+        padding:1rem;
+    }
+    .category-bg-title{
+        font-size: 4rem;
+    }
+    .category-bg-content{
+        font-size: 1.8rem;
+    }
+    
+    
+}
+
 </style>

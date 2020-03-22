@@ -147,6 +147,7 @@ export default {
     }
     ,
   created(){
+    
     const postid = this.$route.params.id
     //  获取文章详情
      this.axios.get(servicePath.getPostDetail+postid)
@@ -155,7 +156,7 @@ export default {
                this.loading = false
                this.post.content = marked(this.post.content)
                this.getMarkDownTitle(this.post.content)
-               
+               document.title = this.post.title+' | PUKARS的博客';
            }))
   }
 }
@@ -312,7 +313,7 @@ export default {
 .card-content .card-content-item{
   height: auto;
   font-size: 1.05rem;
-  line-height: 1.85rem;
+  line-height: 1.2rem;
   color: #34495e !important;
   /* background: yellow; */
 }
@@ -376,6 +377,9 @@ export default {
 
 
 @media screen and (max-width:640px){
+  .detail-bg-title{
+    font-size: 2rem;
+  }
   .detail-content-container{
     width: 100%;
   }
@@ -391,6 +395,16 @@ export default {
   }
   .content-left .card{
     padding: 1rem 1rem;
+  }
+  .card-content .card-content-item{
+    font-size: .9rem;
+  }
+  .card-tags .card-tag-item{
+    font-size: .9rem;
+    padding: .10rem .65rem;
+  }
+  .card-categories .card-category-item {
+    font-size: 1rem;
   }
     
 }

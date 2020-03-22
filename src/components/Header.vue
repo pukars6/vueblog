@@ -38,7 +38,7 @@
             <a-icon class="mobile-close-icon" type="close" theme="outlined" @click="hideSideBar()"/>
             <div class="mobile-info"><h1>PUKARS</h1><p>No Bug No Life</p></div>
             <div class="mobile-navlist">
-                <router-link :key="item.name" v-for="(item) in navItemList" class="mobile-nav-link" :to="{path:'/'}"> 
+                <router-link :key="item.name" v-for="(item) in navItemList" class="mobile-nav-link" :to="{path:item.url}"> 
                     <div class="mobile-navitem">
                         <a-icon  class="mobile-nav-icon" :type="item.icon" />
                         {{item.name}}
@@ -181,9 +181,9 @@ export default {
     display: none;
     color: #fff;
     position: absolute;
-    width: 2rem;
-    height: 23rem;
-    font-size: 2rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    font-size: 1.8rem;
     top:.8rem;
 }
 
