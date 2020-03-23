@@ -43,17 +43,39 @@
 import scrollReveal from 'scrollreveal';
 import servicePath from '../config/apiUrl'
 export default {
+    props:{
+        axiosName:String,
+        axiosListParams:{Object}
+    },
     data(){
         return{
             scrollReveal: scrollReveal(),
             postList:[],
-            spinning:true
+            spinning:true,
             }
     },
-    method:{
-        animatePulse(){
-            console.log("1")
-
+    methods:{
+        fetchListData(){
+            this.spinning = true
+            this.axios.get(servicePath.getPostList,{
+            params:this.axiosListParams
+            
+            })
+            .then((res=>{
+                    this.postList = res.data.rows
+                    setTimeout(()=>{
+                        this.spinning = false
+                    },100)
+                    
+                
+            }))
+        }
+    },
+    watch:{
+        axiosListParams:{
+            handler(){
+                this.fetchListData()
+            },deep:true
         }
     },
     updated(){
@@ -78,13 +100,9 @@ export default {
         });
     },
     created(){
-        
-        // 获取最新文章列表
+        // 获取列表
         this.axios.get(servicePath.getPostList,{
-            params:{
-                page:1,
-                pageSize:9
-            }
+            params:this.axiosListParams
             
         })
         .then((res=>{

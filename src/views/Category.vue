@@ -13,16 +13,22 @@
                   <div class="card-title"><a-icon class="cat-icon" type="folder" />文章分类</div>
                    <a-spin id="category-loading" :spinning="loading">
                   <div class="card-chips">
-                      <router-link v-for="(item,index) in CategoryList" :key="index" class="chips-item" :to="item.jumpUrl" :style="randomRgb()">
+                      <div
+                      v-for="(item,index) in CategoryList" 
+                      :key="index" 
+                      class="chips-item" 
+                      :style="randomRgb()"
+                      @click="changePostListByCategory(item)">
                           <span>{{item.name}}</span>
                           <span class="chips-count">{{item.count}}</span>
-                          
-                      </router-link>
+                      </div>
                   </div>
                   </a-spin>
               </div>
           </div>
           <div class="category-radar"></div>
+          <m-postlist :axiosListParams="axiosListParams">
+          </m-postlist>
       </div>
   </div>
 </template>
@@ -34,7 +40,8 @@ export default {
         return{
             CategoryBgImgUrl:require('../../assets/img/swiper/1.jpg'),
             CategoryList:'',
-            loading:true
+            loading:true,
+            axiosListParams:Object
         }
     },
     methods:{
@@ -52,15 +59,25 @@ export default {
             return {
             background: 'rgba(' + R + ',' + G + ',' + B + ',0.6)'
                 };
-        }
+        },
+        changePostListByCategory(item){
+            this.axiosListParams.category = item.name
+        },
     },
     created(){
+        
         this.axios.get(servicePath.getCategoryList)
         .then((res=>{
             this.CategoryList = res.data
             this.addCategoryUrl(this.CategoryList)
             this.loading=false
-            // console.log(this.CategoryList)
+            const firstCategory = this.CategoryList[0].name
+            this.axiosListParams ={
+                page:1,
+                pageSize:15,
+                category:firstCategory
+            }
+            
         }))
     }
 }

@@ -5,7 +5,7 @@
         <div class="home-content">
             <m-homecard>
             </m-homecard>
-            <m-postlist>
+            <m-postlist :axiosListParams="axiosListParams">
             </m-postlist>
         </div>
         <m-footer></m-footer>
@@ -13,8 +13,18 @@
 </template>
 
 <script>
-
 export default {
+    data(){
+        return{
+            axiosListParams:Object
+        }
+    },
+    created(){
+        this.axiosListParams ={
+                page:1,
+                pageSize:9
+            }
+    },
     destroyed () {
     window.removeEventListener('scroll', this.handleScroll); // 离开页面 关闭监听 不然会报错
 }

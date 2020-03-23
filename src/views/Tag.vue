@@ -13,16 +13,23 @@
                   <div class="card-title"><a-icon class="cat-icon" type="folder" />文章标签</div>
                    <a-spin id="tag-loading" :spinning="loading">
                   <div class="card-chips">
-                      <router-link v-for="(item,index) in tagList" :key="index" class="chips-item" :to="item.jumpUrl" :style="randomRgb()">
+                      <div 
+                      v-for="(item,index) in tagList" 
+                      :key="index" 
+                      class="chips-item" 
+                      :to="item.jumpUrl" 
+                      :style="randomRgb()"
+                      @click="changePostListByTag(item)">
                           <span>{{item.name}}</span>
                           <span class="chips-count">{{item.count}}</span>
                           
-                      </router-link>
+                      </div>
                   </div>
                   </a-spin>
               </div>
           </div>
           <div class="tag-radar"></div>
+          <m-postlist :axiosListParams="axiosListParams"></m-postlist>
       </div>
   </div>
 </template>
@@ -34,7 +41,8 @@ export default {
         return{
             tagBgImgUrl:require('../../assets/img/swiper/1.jpg'),
             tagList:'',
-            loading:true
+            loading:true,
+            axiosListParams:Object
         }
     },
     methods:{
@@ -52,15 +60,23 @@ export default {
             return {
             background: 'rgba(' + R + ',' + G + ',' + B + ',0.6)'
                 };
+        },
+        changePostListByTag(item){
+            this.axiosListParams.tag = item.name
         }
     },
-    created(){
+    created(){  
         this.axios.get(servicePath.getTagList)
         .then((res=>{
             this.tagList = res.data
             this.addtagUrl(this.tagList)
             this.loading=false
-            // console.log(this.tagList)
+            const firstTag = this.tagList[0].name
+            this.axiosListParams ={
+                page:1,
+                pageSize:15,
+                tag:firstTag
+        }
         }))
     }
 }
