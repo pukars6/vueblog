@@ -6,6 +6,11 @@ import Home from './views/Home.vue'
 import Detail from './views/Detail.vue'
 import Tag from './views/Tag.vue'
 import Category from './views/Category.vue'
+import Archive from './views/Archive.vue'
+import About from './views/About.vue'
+import Friend from './views/Friend.vue'
+import Search from './views/Search.vue'
+
 
 Vue.use(Router)
 
@@ -46,6 +51,42 @@ const router = new Router({
             meta:{
                 // 页面标题title
                 title: '文章分类 | PUKARS的博客'
+            }
+        },
+        {
+            path:'/archives',
+            name:'archive',
+            component:Archive,
+            meta:{
+                // 页面标题title
+                title: '文章归档 | PUKARS的博客'
+            }
+        },
+        {
+            path:'/about',
+            name:'about',
+            component:About,
+            meta:{
+                // 页面标题title
+                title: '关于 | PUKARS的博客'
+            }
+        },
+        {
+            path:'/friend',
+            name:'friend',
+            component:Friend,
+            meta:{
+                // 页面标题title
+                title: '友情链接 | PUKARS的博客'
+            }
+        },
+        {
+            path:'/search',
+            name:'search',
+            component:Search,
+            meta:{
+                // 页面标题title
+                title: '搜索 | PUKARS的博客'
             }
         }
     ],

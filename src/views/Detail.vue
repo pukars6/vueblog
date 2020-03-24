@@ -313,7 +313,7 @@ export default {
 .card-content .card-content-item{
   height: auto;
   font-size: 1.05rem;
-  line-height: 1.2rem;
+  line-height: 1.5rem;
   color: #34495e !important;
   /* background: yellow; */
 }
@@ -398,6 +398,7 @@ export default {
   }
   .card-content .card-content-item{
     font-size: .9rem;
+    line-height: 1.4rem;
   }
   .card-tags .card-tag-item{
     font-size: .9rem;
